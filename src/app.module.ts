@@ -1,27 +1,22 @@
-import { RedisModule } from "@liaoliaots/nestjs-redis";
 import { Module } from "@nestjs/common";
 import { ConfigModule } from "@nestjs/config";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
-import { AuthModule } from "./auth/auth.module";
-import { AccessTokenGuard } from "./auth/common/guards/access-token.guard";
-import { DrizzleModule } from "./database/drizzle/drizzle.module";
+import { AuthModule } from "./modules/auth/auth.module";
+import { AccessTokenGuard } from "./modules/auth/guards/access-token.guard";
+import { RedisModule } from "./modules/redis/redis.module";
+import { UserModule } from "./modules/users/user.module";
+import { DrizzleModule } from "./modules/database/drizzle.module";
 
 @Module({
 	imports: [
-		DrizzleModule,
-		RedisModule.forRoot({
-			readyLog: true,
-			config: {
-				host: "localhost",
-				port: 6379,
-				password: "authpassword",
-			},
-		}),
 		AuthModule,
 		ConfigModule.forRoot({
 			envFilePath: ".env",
 		}),
+		DrizzleModule,
+		RedisModule,
+		UserModule,
 	],
 	controllers: [AppController],
 	providers: [

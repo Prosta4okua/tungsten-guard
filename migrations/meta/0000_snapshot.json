@@ -1,5 +1,5 @@
 {
-  "id": "0dfc6a87-28aa-492e-a919-a90949619dbe",
+  "id": "8a43dc87-a33b-484a-996f-6355a4a19366",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -27,11 +27,11 @@
           "primaryKey": false,
           "notNull": true
         },
-        "hashedRefreshToken": {
-          "name": "hashedRefreshToken",
+        "fullName": {
+          "name": "fullName",
           "type": "varchar",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "created_at": {
           "name": "created_at",
